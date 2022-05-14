@@ -1,7 +1,46 @@
-@import '~bootstrap';
+@import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons';
 
 html,
 body {
     height: 100%;
+    font-family: "Nunito", sans-serif;
+}
+
+.sidebar{
+    width: 14rem;
+}
+
+.sidebar-heading{
+    color: rgba(255,255,255,.4);
+    text-align: left;
+    padding: 0 1rem;
+    font-weight: 800;
+    font-size: .65rem;
+    margin-bottom: 0.5rem;
+}
+
+#content-wrapper{
+    background-color: #f8f9fc;
+}
+
+.navbar{
+    height: 62px;
+}
+
+.navbar-divider{
+    width: 0;
+    border-right: 1px solid #e3e6f0;
+    height: calc(4.375rem - 2rem);
+    margin: auto 1rem;
+}
+
+.profil-name{
+    color: #858796!important;
+    font-weight: 800;
+    font-size: 80%;
+}
+
+.shadow{
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
 }

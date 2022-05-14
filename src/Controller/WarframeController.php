@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MenuController extends AbstractController
+class WarframeController extends AbstractController
 {
-    #[Route('/', name: 'app_main')]
+    #[Route('/warframe/damage-calculator', name: 'app_warframe_damage_calculator')]
     public function menu(): Response
     {
-        dump('main');
+        dump('warframe');
 
-        return $this->render('menu/index.html.twig');
+        return $this->render('warframe/damage_calculator/index.html.twig');
     }
 }

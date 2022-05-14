@@ -16,6 +16,79 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        {% set current_path = app.request.get('_route') %}
+
+        {# WRAPPER #}
+        <div id="wrapper" class="d-flex flex-nowrap h-100">
+
+            {# SIDEBAR #}
+            <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark bg-gradient">
+                <a href="/" class="d-flex text-white text-decoration-none justify-content-center">
+                    <span class="fs-5 fw-bold">OB Projects</span>
+                </a>
+
+                <hr>
+
+                <ul class="nav nav-pills flex-column mb-auto">
+
+                    <div class="sidebar-heading">WARFRAME</div>
+
+                    <li class="nav-item">
+                        <a href="{{ path('app_warframe_damage_calculator') }}" class="nav-link text-white {% if current_path == 'app_warframe_damage_calculator' %}active{% endif %}">
+                            <i class="bi bi-calculator"></i>
+                            Damage calculator
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="bi bi-question-circle"></i>
+                            Coming soon
+                        </a>
+                    </li>
+
+                    <hr>
+
+                    <div class="sidebar-heading">OTHER</div>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="bi bi-question-circle"></i>
+                            Coming soon
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            {# END SIDEBAR #}
+
+            <div id="content-wrapper" class="d-flex flex-column w-100">
+
+                <div class="navbar navbar-expand-lg bg-white mb-4 shadow">
+                    <div class="container-fluid">
+                        <div class=""></div>
+
+
+
+                        <div class="d-inline-flex px-3 align-items-center">
+                            <div class="navbar-divider d-none d-sm-block"></div>
+
+                            <span class="profil-name mx-2">Guest</span>
+                            <i class="bi bi-person-circle my-auto fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+
+
+
+        </div>
+        {# END WRAPPER #}
+
     </body>
 </html>
