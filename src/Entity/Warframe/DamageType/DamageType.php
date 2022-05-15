@@ -2,18 +2,25 @@
 
 namespace App\Entity\Warframe\DamageType;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
+#[ApiResource(
+    shortName: 'warframe/damage_types'
+)]
 class DamageType
 {
     #[ORM\Id, ORM\GeneratedValue, ORM\Column(type: "integer")]
     private $id;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[Assert\NotBlank]
     private string $class;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[Assert\NotBlank]
     private string $name;
 
 

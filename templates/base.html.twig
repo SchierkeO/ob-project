@@ -32,8 +32,10 @@
 
                 <ul class="nav nav-pills flex-column mb-auto">
 
+                    {# -- WARFRAME -- #}
                     <div class="sidebar-heading">WARFRAME</div>
 
+                    {# DAMAGE CALCULATOR #}
                     <li class="nav-item">
                         <a href="{{ path('app_warframe_damage_calculator') }}" class="nav-link text-white {% if current_path == 'app_warframe_damage_calculator' %}active{% endif %}">
                             <i class="bi bi-calculator"></i>
@@ -41,6 +43,7 @@
                         </a>
                     </li>
 
+                    {# CRUD #}
                     <li class="nav-item">
                         <a href="{{ path('app_warframe_crud') }}" class="nav-link text-white {% if current_path == 'app_warframe_crud' %}active{% endif %}">
                             <i class="bi bi-file-earmark-bar-graph"></i>
@@ -63,19 +66,38 @@
             </div>
             {# END SIDEBAR #}
 
+            {# CONTENT WRAPPER #}
             <div id="content-wrapper" class="d-flex flex-column w-100">
 
+                {# NAVBAR #}
                 <div class="navbar navbar-expand-lg bg-white mb-4 shadow">
                     <div class="container-fluid">
-                        <div class=""></div>
+                        <div class="">
+                        </div>
 
-
-
+                        {# PROFIL ZONE #}
                         <div class="d-inline-flex px-3 align-items-center">
                             <div class="navbar-divider d-none d-sm-block"></div>
 
-                            <span class="profil-name mx-2">Guest</span>
-                            <i class="bi bi-person-circle my-auto fs-2"></i>
+                            <div class="dropdown">
+                                <div class="d-inline-flex align-items-center" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span id="profil_name" class="profil-name mx-2">{% if app.request.session.get('password') == app_password %}Admin{% else %}Guest{% endif %}</span>
+                                    <i id="icon_admin" class="bi bi-wrench-adjustable-circle fs-2 {% if app.request.session.get('password') != app_password %}d-none{% endif %}"></i>
+                                    <i id="icon_guest"  class="bi bi-person-circle my-auto fs-2 {% if app.request.session.get('password') == app_password %}d-none{% endif %}"></i>
+                                </div>
+
+                                <ul class="dropdown-menu dropdown-menu-end text-center mt-3" aria-labelledby="dropdownMenuLink">
+
+                                        <div id="dropdown_logout" data-url="{{ path('app_logout') }}" class="{% if app.request.session.get('password') != app_password %}d-none{% endif %}">
+                                            <a id="submit_logout"  class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                                        </div>
+                                        <div id="dropdown_login"  data-url="{{ path('app_login') }}" class="{% if app.request.session.get('password') == app_password %}d-none{% endif %}">
+                                            <input type="password" id="password_login" class="form-control mx-auto my-2" style="width: 140px" placeholder="Password">
+                                            <a id="submit_login" class="dropdown-item"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                                        </div>
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,11 +106,24 @@
                     {% block body %}{% endblock %}
                 </div>
             </div>
-
-
+            {# END CONTENT WRAPPER #}
 
         </div>
         {# END WRAPPER #}
+
+        <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i id="toast_icon" class="bi bi-square-fill me-2"></i>
+                    <strong id="toast_title" class="ml-2 me-auto">Bootstrap</strong>
+                    <small>now</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id="toast_description" class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
 
     </body>
 </html>

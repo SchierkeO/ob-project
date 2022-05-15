@@ -1,3 +1,5 @@
 <?php
 
-return [];
+return [
+    'CRUD_PASSWORD' => null,
+];

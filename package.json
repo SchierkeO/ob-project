@@ -3,7 +3,6 @@
         "@hotwired/stimulus": "^3.0.0",
         "@hotwired/turbo": "^7.0.1",
         "@symfony/stimulus-bridge": "^3.0.0",
-        "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
         "@symfony/webpack-encore": "^2.0.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
@@ -21,7 +20,9 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.5",
+        "axios": "^0.27.2",
         "bootstrap": "5.2.0-beta1",
-        "bootstrap-icons": "^1.8.2"
+        "bootstrap-icons": "^1.8.2",
+        "jquery": "^3.6.0"
     }
 }

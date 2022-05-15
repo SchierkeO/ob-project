@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
+use App\Security\ApiKeyAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class WarframeController extends AbstractController
 {
     #[Route('/warframe/damage-calculator', name: 'app_warframe_damage_calculator')]
-    public function damageCalculator(): Response
+    public function damageCalculator(Request $request): Response
     {
         return $this->render('warframe/damage_calculator/index.html.twig');
     }
